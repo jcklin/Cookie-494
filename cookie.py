@@ -31,7 +31,7 @@ try:
     # Click the Accept button
     accept_button.click()
 
-    # Reload and wait the cookie become stable.
+    # Reload and wait the cookie become stable
     a_driver.refresh()
     WebDriverWait(a_driver, 5).until(
         lambda d: len(d.get_cookies()) > 5
@@ -69,7 +69,7 @@ try:
     # Click the Accept button
     decline_button.click()
 
-    # Reload and wait the cookie become stable.
+    # Reload and wait the cookie become stable
     d_driver.refresh()
     WebDriverWait(d_driver, 5).until(
         lambda d: len(d.get_cookies()) > 5
@@ -81,7 +81,7 @@ try:
     for cookie in cookies:
         print(f"{cookie['name']} = {cookie['value']}")
 
-    input("\nPress ENTER to end...")
+    input("\nPress ENTER to close the browser...")
 
 except Exception as e:
     print(f"An error occurred: {e}")
