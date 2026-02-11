@@ -51,7 +51,7 @@ def clicking_button(website, action):
         else:
             raise ValueError("action must be 'accept' or 'decline'")
         button = wait.until(EC.element_to_be_clickable((By.XPATH, button_path)))
-        # Click the Accept button.
+        # Click the Accept/Decline button.
         button.click()
         # Get cookie after reloading.
         driver.refresh()
@@ -62,7 +62,40 @@ def clicking_button(website, action):
     finally:
         driver.quit()
 
+def get_buttons(website):
+    driver = webdriver.Chrome()
+
+    try:
+        driver.get(website)
+
+        # Wait for cookie banner buttons to appear
+        wait = WebDriverWait(driver, 15)
+        button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(normalize-space(), 'Accept')]")))
+
+        # Search for all of the buttons
+        buttons = driver.find_elements(By.TAG_NAME, "button")
+
+        # Sanity Check
+        print(f"Found {len(buttons)} buttons!")
+        print(f"Only displaying those with non-empty button text")
+
+        button_info = []
+        for index, button in enumerate(buttons):
+            button_text = button.text
+            if button_text != '':
+                button_info.append((index + 1, button_text))
+
+        return button_info
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        driver.quit()
+
+
 if __name__ == "__main__":
+    # Get the buttons and just dump to console
+    buttons = get_buttons(WEBSITE)
+    print(buttons)
     # Get three lists with cookies of this website.
     cookies_before_choice = before_choice(WEBSITE)
     cookies_after_accept = clicking_button(WEBSITE, "accept")
