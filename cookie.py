@@ -1,5 +1,6 @@
 import csv
 import time
+import traceback
 
 from cookie_keywords import ACTION_KEYWORDS
 from selenium import webdriver
@@ -31,7 +32,9 @@ def before_choice(website):
         time.sleep(2)
         return GetCookie(driver)
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred: {type(e).__name__}: {e}")
+        traceback.print_exc()
+        return []
     finally:
         driver.quit()
 
@@ -55,10 +58,13 @@ def clicking_button(website, action):
         button.click()
         # Get cookie after reloading.
         driver.refresh()
-        WebDriverWait(driver, 5).until(lambda d: len(d.get_cookies()) > 5)
+        # Wait for page to load
+        time.sleep(3)
         return GetCookie(driver)
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred: {type(e).__name__}: {e}")
+        traceback.print_exc()
+        return []
     finally:
         driver.quit()
 
@@ -95,7 +101,9 @@ def get_buttons(website):
 
         return button_info
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred: {type(e).__name__}: {e}")
+        traceback.print_exc()
+        return []
     finally:
         driver.quit()
 
@@ -140,30 +148,3 @@ def write_cookies_to_csv(
         write_stage(cookies_after_reject, "after_reject", reject_button_text)
     finally:
         file.close()
-
-if __name__ == "__main__":
-    # Get the buttons and just dump to console
-    buttons = get_buttons(WEBSITE)
-    print(buttons)
-    
-    # Get three lists with cookies of this website.
-    cookies_before_choice = before_choice(WEBSITE)
-    cookies_after_accept = clicking_button(WEBSITE, "accept")
-    cookies_after_reject = clicking_button(WEBSITE, "decline")
-
-    # Get button text.
-    accept_button_text = "Accept"
-    reject_button_text = "Decline"
-
-    # Write in CSV file!
-    write_cookies_to_csv(
-        OUT_CSV,
-        WEBSITE,
-        cookies_before_choice,
-        cookies_after_accept,
-        cookies_after_reject,
-        accept_button_text,
-        reject_button_text,
-    )
-
-    print(f"Saved cookie data to {OUT_CSV}")
