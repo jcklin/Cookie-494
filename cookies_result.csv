@@ -1,28 +1,12 @@
-website,Before_choice,Accept,Reject
-https://www.polleverywhere.com,"{""name"": ""_ga_YPGG9RYX9L"", ""value"": ""GS2.1.s1770783475$o1$g1$t1770783477$j58$l0$h0""}",,
-https://www.polleverywhere.com,"{""name"": ""__hssc"", ""value"": ""40003517.1.1770783477066""}",,
-https://www.polleverywhere.com,"{""name"": ""__hssrc"", ""value"": ""1""}",,
-https://www.polleverywhere.com,"{""name"": ""__hstc"", ""value"": ""40003517.a594269f4a51d0c78cd18e6e39c7ef3c.1770783477066.1770783477066.1770783477066.1""}",,
-https://www.polleverywhere.com,"{""name"": ""_gcl_au"", ""value"": ""1.1.1036898778.1770783477""}",,
-https://www.polleverywhere.com,"{""name"": ""hubspotutk"", ""value"": ""a594269f4a51d0c78cd18e6e39c7ef3c""}",,
-https://www.polleverywhere.com,"{""name"": ""_ga"", ""value"": ""GA1.1.429880909.1770783476""}",,
-https://www.polleverywhere.com,"{""name"": ""_cfuvid"", ""value"": ""nF8ZSMsK8dwLW090iIxhvsieVxMSNzexic7V1kIzLxs-1770783476229-0.0.1.1-604800000""}",,
-https://www.polleverywhere.com,"{""name"": ""__cf_bm"", ""value"": ""jgwdazOuOh5tOTf1X.PyzMuFuO9kN6YxsRDrFQxlSh0-1770783476-1.0.1.1-KEqboHuZL8FKw_TLYxjF.i849xjgWtFAPWJI.bu6nDJ948s9hGssPowdjA14zedaNCHx1Qn1xM4qFqaibi_4mENU3BjV1m4ZviPHOG28tFM""}",,
-https://www.polleverywhere.com,"{""name"": ""hs_ab_test"", ""value"": ""171922626852:195893190541""}",,
-https://www.polleverywhere.com,,"{""name"": ""_cfuvid"", ""value"": ""Xx_Z2IOqjTrw5llqe1AikaE1VJJjYluqzVwQcLEW73E-1770783486023-0.0.1.1-604800000""}",
-https://www.polleverywhere.com,,"{""name"": ""__cf_bm"", ""value"": ""N5VnWK2LpxAcgiu5G45KcKnVSdwK.X_Yd5Rw2Yb3eI0-1770783486-1.0.1.1-hy1G33f_ilNZ6RSjEd.wKGLD.0TXKT4EO5LydfCTm1x.OdPP07uGdy1FR8Ddi13.T1IzqphWWxKz7pIoOJy6dAzfDJteGQHXTqUwY.0o8Qk""}",
-https://www.polleverywhere.com,,"{""name"": ""_ga_YPGG9RYX9L"", ""value"": ""GS2.1.s1770783483$o1$g1$t1770783485$j58$l0$h0""}",
-https://www.polleverywhere.com,,"{""name"": ""__hssc"", ""value"": ""40003517.2.1770783484229""}",
-https://www.polleverywhere.com,,"{""name"": ""__hssrc"", ""value"": ""1""}",
-https://www.polleverywhere.com,,"{""name"": ""_gcl_au"", ""value"": ""1.1.2073189594.1770783484""}",
-https://www.polleverywhere.com,,"{""name"": ""__hstc"", ""value"": ""40003517.2166509983a2ab802db22872edbb5e58.1770783484229.1770783484229.1770783484229.1""}",
-https://www.polleverywhere.com,,"{""name"": ""hubspotutk"", ""value"": ""2166509983a2ab802db22872edbb5e58""}",
-https://www.polleverywhere.com,,"{""name"": ""_ga"", ""value"": ""GA1.1.1051700207.1770783483""}",
-https://www.polleverywhere.com,,"{""name"": ""__hs_cookie_cat_pref"", ""value"": ""1:true_2:true_3:true""}",
-https://www.polleverywhere.com,,"{""name"": ""hs_ab_test"", ""value"": ""171922626852:195893190541""}",
-https://www.polleverywhere.com,,,"{""name"": ""hs_ab_test"", ""value"": ""171922626852:195893190541""}"
-https://www.polleverywhere.com,,,"{""name"": ""__hs_cookie_cat_pref"", ""value"": ""1:false_2:false_3:false""}"
-https://www.polleverywhere.com,,,"{""name"": ""_gcl_au"", ""value"": ""1.1.850432581.1770783490""}"
-https://www.polleverywhere.com,,,"{""name"": ""_ga"", ""value"": ""GA1.1.1018831540.1770783490""}"
-https://www.polleverywhere.com,,,"{""name"": ""_cfuvid"", ""value"": ""ECW8A3sIp7157LLgJc5T4xi2qpkaKPk_MPylNqOWMCY-1770783492024-0.0.1.1-604800000""}"
-https://www.polleverywhere.com,,,"{""name"": ""__cf_bm"", ""value"": ""3iixxihWplO_ozjTM9DfkWRGcBkkaJmd7v7sTkGdamU-1770783492-1.0.1.1-KXf9uKuW1Uhg1BxkKAGnfpKGGrpWjg9LtTmxxCuA7kQTEKhHCAX9H7cFO7sNF83vHpyAM7ZafrMCKmVabyil3sdquablpYNzlLjIuGBJLEM""}"
+website,cookie_name,cookie_value,stage,button_text
+https://www.polleverywhere.com,_cfuvid,UE.fbN4CjdHsu9jnBv6SbIjE.1nv9UdU24beeQMGY.k-1771306385279-0.0.1.1-604800000,page_load,
+https://www.polleverywhere.com,__cf_bm,UfYBxyyq6Yoi560sZe_79Si5JGlFC7i7sPpiITKJdg4-1771306385-1.0.1.1-BIB2V8R0kU1poxXZKi1L2cTcRmaO5rc55XA_8sJ06_W816Ufgy4zLbxX9Im45YmQ72PaZUbHE21hpYbyImwIekY1kfiGhfCXo5gHJY4wOB4,page_load,
+https://www.polleverywhere.com,hs_ab_test,171922626852:195893190541,page_load,
+https://www.polleverywhere.com,__hs_cookie_cat_pref,1:true_2:true_3:true,after_accept,Accept
+https://www.polleverywhere.com,_cfuvid,mfqXskDDX_18srVgmcKhxc1uboK_Ek.j..ZmvIyNgBY-1771306393404-0.0.1.1-604800000,after_accept,Accept
+https://www.polleverywhere.com,__cf_bm,Y4Q6VLUedAymC6i_xJkRelKgf_yN.aM6b3.gWoGAO3Y-1771306393-1.0.1.1-G05gpV9AumT5ZQuhbla_BreVC0xN7ZKo83b4yREPJ0laKgR0qF813bUlVQQHdNxjQTLj6HCun9Cy3.vKywQLjtQdZ_vCGstsJO5XlrKn_SE,after_accept,Accept
+https://www.polleverywhere.com,hs_ab_test,171922626852:195893190541,after_accept,Accept
+https://www.polleverywhere.com,_cfuvid,9WzF3g9chnrl0bSx1yQ8X7LGaRUnQhiSiNnpK8qt0nY-1771306405947-0.0.1.1-604800000,after_reject,Decline
+https://www.polleverywhere.com,__hs_cookie_cat_pref,1:false_2:false_3:false,after_reject,Decline
+https://www.polleverywhere.com,__cf_bm,qWl3IA9puRwxGJK7yot8y6IA5ZDoaU9xNAVNiBzoCEo-1771306405-1.0.1.1-47DUV7hF0Hoh4CFsCSvMNmUoNhRB6HEUAcc_i9wVXA.vS7QbPVdToRAo9Poq57gZctDaFyup00atVj8DgDCxaUsfCuKySqy.Ne7t4gHr3Qs,after_reject,Decline
+https://www.polleverywhere.com,hs_ab_test,171922626852:195893190541,after_reject,Decline
