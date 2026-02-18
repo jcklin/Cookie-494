@@ -10,6 +10,14 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # We can try more website.
 WEBSITE = "https://www.polleverywhere.com"
+
+WEBSITES = [
+    "https://tinycookie.com/",
+    "https://www.polleverywhere.com",
+    "https://www.ferrari.com/en-US",
+    "https://www.t-mobile.com/switch/new-customer-switch-deals?gclsrc=aw.ds&&cmpid=MGPO_PB_P_EVGRNPSTPD_26741626_135032613545_778421130718&gad_source=1&gad_campaignid=16905361619&gbraid=0AAAAAD79WuVp3FzMfqdMwPJ_7FaAIPxY1&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUP4kDZK9CcD0UuQ8YGlNcofSRuqkLDt2TNpbyPnjkFGd4uEVF-h_khoCNucQAvD_BwE",
+]
+
 OUT_CSV = "cookies_result.csv"
 
 # Get cookies from dirver as list.
@@ -116,8 +124,10 @@ def write_cookies_to_csv(
     cookies_after_reject,
     accept_button_text,
     reject_button_text,
+    write_header=True,
 ):
-    file = open(out_csv, "w", newline="", encoding="utf-8")
+    mode ="w" if write_header else "a"
+    file = open(out_csv, mode, newline="", encoding="utf-8")
     try:
         writer = csv.DictWriter(
             file,
@@ -129,7 +139,8 @@ def write_cookies_to_csv(
                 "button_text",
             ],
         )
-        writer.writeheader()
+        if write_header:
+            writer.writeheader()
 
         def write_stage(cookies, stage, button_text):
             for cookie in (cookies):
