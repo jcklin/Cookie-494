@@ -3,6 +3,7 @@ import time
 import traceback
 
 from cookie_keywords import ACTION_KEYWORDS
+from banner_detector import find_cookie_banner
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -47,24 +48,18 @@ def before_choice(website):
         driver.quit()
 
 # Implementation for clicking button.
-def clicking_button(website, action):
+def clicking_button(website, button_text):
     driver = webdriver.Chrome()
     try:
         driver.get(website)
-        # Wait until the Accept is clickable
-        # and decide which button to use.
+        # Wait until the button is clickable
         wait = WebDriverWait(driver, 15)
-        if action.lower() == "accept":
-            # This code only work on the button "Accept" and "Decline".
-            button_path = "//button[contains(normalize-space(), 'Accept')]"
-        elif action.lower() == "decline":
-            button_path = "//button[contains(normalize-space(), 'Decline')]"
-        else:
-            raise ValueError("action must be 'accept' or 'decline'")
+        # Match any button containing the target text, should work on more buttons now
+        button_path = f"//button[contains(normalize-space(), '{button_text}')]"
         button = wait.until(EC.element_to_be_clickable((By.XPATH, button_path)))
-        # Click the Accept/Decline button.
+        # Click the button
         button.click()
-        # Get cookie after reloading.
+        # Get cookie after reloading
         driver.refresh()
         # Wait for page to load
         time.sleep(3)
@@ -94,20 +89,35 @@ def get_buttons(website):
         # Wait for cookie banner buttons to appear
         time.sleep(2)
 
-        # Search for all of the buttons
-        buttons = driver.find_elements(By.TAG_NAME, "button")
+        # Try to find the cookie banner first
+        banner = find_cookie_banner(driver)
+
+        if banner:
+            # Search for buttons only INSIDE the cookie banner
+            print("Found cookie banner via EasyList!")
+            buttons = banner.find_elements(By.TAG_NAME, "button")
+        else:
+            # Search for all of the buttons on the page (fallback)
+            print("No cookie banner found via EasyList, falling back to all buttons")
+            buttons = driver.find_elements(By.TAG_NAME, "button")
 
         # Sanity Check
         print(f"Found {len(buttons)} buttons!")
-        print(f"Only displaying those within cookie action keywords")
 
         button_info = []
         for index, button in enumerate(buttons):
-            button_text = button.text
-            if is_cookie_action_text(button_text):
-                button_info.append((index + 1, button_text))
+            button_text = button.text.strip()
+            if banner:
+                # Banner found: all buttons inside it are cookie-related
+                if button_text:
+                    button_info.append((index + 1, button_text))
+            else:
+                # No banner: only display those within cookie action keywords
+                if is_cookie_action_text(button_text):
+                    button_info.append((index + 1, button_text))
 
         return button_info
+    # Keep going if an error occurred
     except Exception as e:
         print(f"An error occurred: {type(e).__name__}: {e}")
         traceback.print_exc()
