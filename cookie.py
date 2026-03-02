@@ -8,12 +8,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 
 # We can try more website.
 WEBSITE = "https://www.polleverywhere.com"
-
-# WEBSITES = ["https://www.polleverywhere.com"]
 
 WEBSITES = [
     "https://tinycookie.com/",
@@ -52,22 +49,13 @@ def before_choice(website):
 
 # Implementation for clicking button.
 def clicking_button(website, button_text):
-    if button_text is None or not str(button_text).strip():
-        print("Skip clicking: button_text is empty.")
-        return []
-    
     driver = webdriver.Chrome()
     try:
         driver.get(website)
-        # Wait until the button is clickable, wait at most 6 seconds.
-        wait = WebDriverWait(driver, 6)
-        # Match button text case-insensitively.
-        lowered_text = str(button_text).strip().lower()
-        button_path = (
-            "//button[contains(translate(normalize-space(.), "
-            "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), "
-            f"'{lowered_text}')]"
-        )
+        # Wait until the button is clickable
+        wait = WebDriverWait(driver, 15)
+        # Match any button containing the target text, should work on more buttons now
+        button_path = f"//button[contains(normalize-space(), '{button_text}')]"
         button = wait.until(EC.element_to_be_clickable((By.XPATH, button_path)))
         # Click the button
         button.click()
@@ -76,11 +64,9 @@ def clicking_button(website, button_text):
         # Wait for page to load
         time.sleep(3)
         return GetCookie(driver)
-    except TimeoutException:
-        print(f"TimeoutException: could not click button '{button_text}' within 6 seconds on {website}")
-        return []
     except Exception as e:
         print(f"An error occurred: {type(e).__name__}: {e}")
+        traceback.print_exc()
         return []
     finally:
         driver.quit()
@@ -146,11 +132,9 @@ def write_cookies_to_csv(
     cookies_before_choice,
     cookies_after_accept,
     cookies_after_reject,
-    cookies_after_special,
     accept_button_text,
     reject_button_text,
-    special_button_text,
-    write_header,
+    write_header=True,
 ):
     mode ="w" if write_header else "a"
     file = open(out_csv, mode, newline="", encoding="utf-8")
@@ -183,6 +167,5 @@ def write_cookies_to_csv(
         write_stage(cookies_before_choice, "page_load", "")
         write_stage(cookies_after_accept, "after_accept", accept_button_text)
         write_stage(cookies_after_reject, "after_reject", reject_button_text)
-        write_stage(cookies_after_special, "after_special", special_button_text)
     finally:
         file.close()
