@@ -8,12 +8,15 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import (
+    ElementClickInterceptedException,
+    JavascriptException,
+    StaleElementReferenceException,
+    TimeoutException,
+)
 
 # We can try more website.
 WEBSITE = "https://www.polleverywhere.com"
-
-# WEBSITES = ["https://www.polleverywhere.com"]
 
 WEBSITES = [
     "https://tinycookie.com/",
@@ -23,6 +26,53 @@ WEBSITES = [
 ]
 
 OUT_CSV = "cookies_result.csv"
+
+# Normalize button text.
+def _normalize_text(text):
+    return " ".join(str(text).strip().lower().split())
+
+# Help to find correct buttons via all the buttons in the web page.
+def _find_matching_button(driver, button_text):
+    target_text = _normalize_text(button_text)
+    banner = find_cookie_banner(driver)
+
+    candidates = []
+    if banner:
+        candidates.extend(banner.find_elements(By.TAG_NAME, "button"))
+    else:
+        candidates.extend(driver.find_elements(By.TAG_NAME, "button"))
+
+    for button in candidates:
+        try:
+            if _normalize_text(button.text) == target_text:
+                return button
+        except StaleElementReferenceException:
+            continue
+
+    for button in candidates:
+        try:
+            if target_text in _normalize_text(button.text):
+                return button
+        except StaleElementReferenceException:
+            continue
+
+    return None
+
+# Adding scrollIntoView to help click buttons.
+def _click_button(driver, button):
+    driver.execute_script(
+        "arguments[0].scrollIntoView({block: 'center', inline: 'center'});",
+        button,
+    )
+    time.sleep(1)
+
+    try:
+        button.click()
+        return
+    except ElementClickInterceptedException:
+        pass
+
+    driver.execute_script("arguments[0].click();", button)
 
 # Get cookies from dirver as list.
 def GetCookie(driver):
@@ -61,23 +111,21 @@ def clicking_button(website, button_text):
         driver.get(website)
         # Wait until the button is clickable, wait at most 6 seconds.
         wait = WebDriverWait(driver, 6)
-        # Match button text case-insensitively.
-        lowered_text = str(button_text).strip().lower()
-        button_path = (
-            "//button[contains(translate(normalize-space(.), "
-            "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), "
-            f"'{lowered_text}')]"
-        )
-        button = wait.until(EC.element_to_be_clickable((By.XPATH, button_path)))
-        # Click the button
-        button.click()
-        # Get cookie after reloading
-        driver.refresh()
-        # Wait for page to load
-        time.sleep(3)
+
+        button = wait.until(lambda d: _find_matching_button(d, button_text))
+        _click_button(driver, button)
+
+        try:
+            wait.until(EC.staleness_of(button))
+        except (TimeoutException, StaleElementReferenceException):
+            time.sleep(2)
+
         return GetCookie(driver)
     except TimeoutException:
         print(f"TimeoutException: could not click button '{button_text}' within 6 seconds on {website}")
+        return []
+    except JavascriptException as e:
+        print(f"JavascriptException while clicking '{button_text}' on {website}: {e}")
         return []
     except Exception as e:
         print(f"An error occurred: {type(e).__name__}: {e}")
