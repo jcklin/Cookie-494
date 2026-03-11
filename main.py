@@ -36,6 +36,8 @@ if __name__ == "__main__":
         for _, text in buttons:
             lower = text.strip().lower()
 
+            # Priority matters:
+            # special > reject > customize > accept
             if special_btn is None and any(k in lower for k in SPECIAL_KEYWORDS):
                 special_btn = text
                 continue

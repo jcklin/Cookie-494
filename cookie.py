@@ -27,11 +27,11 @@ WEBSITES = [
 
 OUT_CSV = "cookies_result.csv"
 
-
+# Normalize button text.
 def _normalize_text(text):
     return " ".join(str(text).strip().lower().split())
 
-
+# Help to find correct buttons via all the buttons in the web page.
 def _find_matching_button(driver, button_text):
     target_text = _normalize_text(button_text)
     banner = find_cookie_banner(driver)
@@ -58,7 +58,7 @@ def _find_matching_button(driver, button_text):
 
     return None
 
-
+# Adding scrollIntoView to help click buttons.
 def _click_button(driver, button):
     driver.execute_script(
         "arguments[0].scrollIntoView({block: 'center', inline: 'center'});",
@@ -109,7 +109,7 @@ def clicking_button(website, button_text):
     driver = webdriver.Chrome()
     try:
         driver.get(website)
-        time.sleep(2)
+        # Wait until the button is clickable, wait at most 6 seconds.
         wait = WebDriverWait(driver, 6)
 
         button = wait.until(lambda d: _find_matching_button(d, button_text))
