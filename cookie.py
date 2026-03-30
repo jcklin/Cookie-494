@@ -28,12 +28,12 @@ WEBSITES = [
 OUT_CSV = "cookies_result.csv"
 
 # Normalize button text.
-def _normalize_text(text):
+def normalize_text(text):
     return " ".join(str(text).strip().lower().split())
 
 # Help to find correct buttons via all the buttons in the web page.
-def _find_matching_button(driver, button_text):
-    target_text = _normalize_text(button_text)
+def find_matching_button(driver, button_text):
+    target_text = normalize_text(button_text)
     banner = find_cookie_banner(driver)
 
     candidates = []
@@ -44,14 +44,14 @@ def _find_matching_button(driver, button_text):
 
     for button in candidates:
         try:
-            if _normalize_text(button.text) == target_text:
+            if normalize_text(button.text) == target_text:
                 return button
         except StaleElementReferenceException:
             continue
 
     for button in candidates:
         try:
-            if target_text in _normalize_text(button.text):
+            if target_text in normalize_text(button.text):
                 return button
         except StaleElementReferenceException:
             continue
@@ -59,7 +59,7 @@ def _find_matching_button(driver, button_text):
     return None
 
 # Adding scrollIntoView to help click buttons.
-def _click_button(driver, button):
+def scroll_click_button(driver, button):
     driver.execute_script(
         "arguments[0].scrollIntoView({block: 'center', inline: 'center'});",
         button,
@@ -112,8 +112,8 @@ def clicking_button(website, button_text):
         # Wait until the button is clickable, wait at most 6 seconds.
         wait = WebDriverWait(driver, 6)
 
-        button = wait.until(lambda d: _find_matching_button(d, button_text))
-        _click_button(driver, button)
+        button = wait.until(lambda d: find_matching_button(d, button_text))
+        scroll_click_button(driver, button)
 
         try:
             wait.until(EC.staleness_of(button))
@@ -209,6 +209,7 @@ def write_cookies_to_csv(
                 "website",
                 "cookie_name",
                 "cookie_value",
+                "cookie_count",
                 "stage",
                 "button_text",
             ],
@@ -217,12 +218,30 @@ def write_cookies_to_csv(
             writer.writeheader()
 
         def write_stage(cookies, stage, button_text):
+            cookie_count = len(cookies)
+
+            # Write a row even if there is no Cookie.
+            if not cookies:
+                writer.writerow(
+                    {
+                        "website": website,
+                        "cookie_name": "",
+                        "cookie_value": "",
+                        "cookie_count": cookie_count,
+                        "stage": stage,
+                        "button_text": button_text,
+                    }
+                )
+                return
+            
+            # Normal writing
             for cookie in (cookies):
                 writer.writerow(
                     {
                         "website": website,
                         "cookie_name": cookie.get("name", ""),
                         "cookie_value": cookie.get("value", ""),
+                        "cookie_count": cookie_count,
                         "stage": stage,
                         "button_text": button_text,
                     }
