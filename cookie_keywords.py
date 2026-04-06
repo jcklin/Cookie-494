@@ -1,7 +1,11 @@
 ACCEPT_KEYWORDS = [
     # Keep optional
     "stay opted-in",
-    "stay opt-in"
+    "stay opt-in",
+    "stay opted in",
+    "stay opt in",
+    "stay opted",
+    "stay opt",
 
     # Basic accept
     "accept",
