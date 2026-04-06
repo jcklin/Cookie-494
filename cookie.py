@@ -20,9 +20,17 @@ WEBSITE = "https://www.polleverywhere.com"
 
 WEBSITES = [
     "https://tinycookie.com/",
-    "https://www.polleverywhere.com",
+    "https://www.polleverywhere.com/",
     "https://www.ferrari.com/en-US",
-    "https://www.t-mobile.com/switch/new-customer-switch-deals?gclsrc=aw.ds&&cmpid=MGPO_PB_P_EVGRNPSTPD_26741626_135032613545_778421130718&gad_source=1&gad_campaignid=16905361619&gbraid=0AAAAAD79WuVp3FzMfqdMwPJ_7FaAIPxY1&gclid=CjwKCAiAmp3LBhAkEiwAJM2JUP4kDZK9CcD0UuQ8YGlNcofSRuqkLDt2TNpbyPnjkFGd4uEVF-h_khoCNucQAvD_BwE",
+    "https://www.t-mobile.com/",
+    "https://travel.vodafone.com/",
+    "https://www.paypal.com/us/home",
+    "https://www.bt.com/",
+    "https://www.hubspot.com/",
+    "https://www.onetrust.com/",
+    "https://trustarc.com/",
+    "https://www.digitalocean.com/",
+    "https://www.adyen.com/",
 ]
 
 OUT_CSV = "cookies_result.csv"
