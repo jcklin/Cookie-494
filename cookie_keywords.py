@@ -1,4 +1,6 @@
 ACCEPT_KEYWORDS = [
+    "Autoriser tous les cookies",
+
     # Keep optional
     "stay opted-in",
     "stay opt-in",
@@ -130,6 +132,8 @@ REJECT_KEYWORDS = [
 ]
 
 SPECIAL_KEYWORDS = [
+    "Accepter uniquement les cookies nécessaires",
+
     # Essential / Necessary only
     "essential only",
     "necessary only",
