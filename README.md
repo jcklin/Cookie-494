@@ -11,13 +11,15 @@ This project uses [selenium](https://www.selenium.dev/).
 pip install selenium
 ```
 
-Collect button text if each websites
+## Usage
+
+Collect button text
 
 ```bash
 py collect_button.py
 ```
 
-Collect cookie for websites listed in button_text.csv
+Collect cookies for websites listed in button_text.csv
 
 ```bash
 py collect_cookie.py
