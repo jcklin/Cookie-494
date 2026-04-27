@@ -1,0 +1,9 @@
+website,accept_btn,reject_btn,special_btn,customize_btn
+https://tinycookie.com/,Accept all,,Accept required only,
+https://www.paypal.com/us/home,Accept,Decline,,Close
+https://trustarc.com/,Accept All,,Reject Optional,Manage Settings
+https://www.digitalocean.com/,AGREE & PROCEED,DECLINE ALL,,MANAGE CHOICES
+https://www.adyen.com/,Accept Cookies,Reject All,,Cookie settings
+https://www.bt.com/,Accept all,Reject all,,Manage cookie settings
+https://www.vodafone.com/,Accept All Cookies,Reject All,,Cookies Settings
+https://www.hubspot.com/,Accept All,Decline All,,Manage Cookies

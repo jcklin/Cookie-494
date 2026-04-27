@@ -9,3 +9,18 @@ This project uses [selenium](https://www.selenium.dev/).
 
 ```bash
 pip install selenium
+```
+
+## Usage
+
+Collect button text
+
+```bash
+py collect_button.py
+```
+
+Collect cookies for websites listed in button_text.csv
+
+```bash
+py collect_cookie.py
+```
