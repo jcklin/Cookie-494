@@ -15,15 +15,49 @@ from cookie_keywords import (
 )
 
 WEBSITES = [
-    "https://tinycookie.com/",
-    # "https://www.polleverywhere.com/",
-    "https://www.paypal.com/us/home",
-    "https://trustarc.com/",
-    "https://www.digitalocean.com/",
-    "https://www.adyen.com/",
-    "https://www.bt.com/",
-    "https://www.vodafone.com/",
-    "https://www.hubspot.com/",
+    # "https://tinycookie.com/",
+    # "https://www.paypal.com/us/home",
+    # "https://trustarc.com/",
+    # "https://www.digitalocean.com/",
+    # "https://www.adyen.com/",
+    # "https://www.bt.com/",
+    # "https://www.vodafone.com/",
+    # "https://www.hubspot.com/",
+
+    # News
+    "https://www.lemonde.fr/",
+    "https://www.euronews.com/",
+    "https://www.france24.com/",
+    "https://www.irishtimes.com/",
+    "https://www.bloomberg.com/",
+    "https://www.cnbc.com/",
+    "https://www.20minutes.fr/",
+    "https://www.belfasttelegraph.co.uk/",
+    "https://www.thenationalnews.com/",
+    "https://globalnews.ca/",
+
+    # Shopping
+    "https://www.ikea.com/",
+    # "https://www2.hm.com/en_us/index.html",
+    "https://www.boohoo.com/",
+    "https://www.prettylittlething.com/",
+    "https://www.next.co.uk/",
+    "https://www.argos.co.uk/",
+    "https://www.ikea.com/",
+    "https://www.cultbeauty.co.uk/",
+    "https://www.jdsports.co.uk/",
+
+    # Travel
+    "https://www.easyjet.com/en/",
+    "https://www.lufthansa.com/",
+    "https://www.britishairways.com/",
+    "https://www.premierinn.com/",
+    "https://www.opodo.com/",
+    "https://www.lastminute.com/",
+    # "https://www.onthebeach.co.uk/",
+    "https://www.holidaypirates.com/",
+    "https://www.thetrainline.com/",
+    "https://www.jet2.com/",
 ]
 
 BUTTON_TEXT_CSV = "button_text.csv"
