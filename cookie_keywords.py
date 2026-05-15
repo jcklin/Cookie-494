@@ -133,6 +133,7 @@ REJECT_KEYWORDS = [
 
 SPECIAL_KEYWORDS = [
     "Accepter uniquement les cookies nécessaires",
+    "Aceptar",
 
     # Essential / Necessary only
     "essential only",

@@ -1,4 +1,29 @@
 website,accept_btn,reject_btn,special_btn,customize_btn
+https://www.lemonde.fr/,Accept,,,
+https://www.euronews.com/,Agree and close,,,Learn More?
+https://www.france24.com/,Accept,Deny,,Customize
+https://www.irishtimes.com/,I ACCEPT,,,MANAGE SETTINGS
+https://www.bloomberg.com/,Accept,,,
+https://www.cnbc.com/,Continue,,,
+https://www.20minutes.fr/,ACCEPTER ET FERMER,,,
+https://www.belfasttelegraph.co.uk/,Accept,Reject,,Manage
+https://www.thenationalnews.com/,ACCEPT,,,Cookie Preferences
+https://globalnews.ca/,ACCEPT,DECLINE,,
+https://www.ikea.com/,Accept,Reject,,Cookie settings
+https://www.boohoo.com/,ACCEPT ALL,REJECT ALL,,
+https://www.prettylittlething.com/,ACCEPT ALL,REJECT ALL,,
+https://www.next.co.uk/,ACCEPT ALL COOKIES,,REJECT NON-ESSENTIAL COOKIES,MANUALLY MANAGE COOKIES
+https://www.argos.co.uk/,Continue and accept,,Required only,
+https://www.cultbeauty.co.uk/,That's OK,,,Set Preferences
+https://www.jdsports.co.uk/,Accept All Cookies,Reject All Cookies,,Your Cookie Settings
+https://www.easyjet.com/en/,Booking.com,Decline Advertising Cookies,,Manage Bookings
+https://www.britishairways.com/,Accept All,Reject All,,Customise
+https://www.premierinn.com/,Manage cookies,,Necessary only,Skip to content
+https://www.opodo.com/,Agree & Close,,,Learn More
+https://www.lastminute.com/,Manage cookies,,Reject non-essential,Skip to content
+https://www.holidaypirates.com/,Accept all,,Only Essential,Customise
+https://www.thetrainline.com/,Choose Cookies,,,
+https://www.jet2.com/,Accept,Reject,,Manage settings
 https://tinycookie.com/,Accept all,,Accept required only,
 https://www.paypal.com/us/home,Accept,Decline,,Close
 https://trustarc.com/,Accept All,,Reject Optional,Manage Settings
